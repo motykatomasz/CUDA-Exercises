@@ -44,6 +44,11 @@ message(STATUS "    version: ${OpenCV_VERSION}")
 message(STATUS "    libraries: ${OpenCV_LIBS}")
 message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 
+
 add_executable(${PROJECT_NAME} ${DEFAULT_SOURCES} ${CUDA_SOURCES})
 
 target_link_libraries(pset1 ${OpenCV_LIBS})
+target_compile_options(pset1 PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:
+                       -g
+                       -G
+                       >)
